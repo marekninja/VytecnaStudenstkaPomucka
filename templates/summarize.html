@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-5">
+        <p class="text-left">Original text (EN)</p>
+        <textarea cols="80" rows="60">{{ original_text }}</textarea>
+    </div>
+    <div class="col-md-7 ocr-text">
+        <p class="text-left">Summarize text (SK)</p>
+        <textarea cols="80" rows="60">{{ summarize_text }}</textarea>
+    </div>
+</div>
+{% endblock %}

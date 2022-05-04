@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  
+    <p>Upload an image for text.</p>
+    <div class="upload-form">
+      <form action = "/text_from_image" method = "POST" 
+        enctype = "multipart/form-data">
+        <input type = "file" name = "file" />
+        <input type = "submit"/>
+      </form>
+    </div>
+
+    <p>Upload an text to translate.</p>
+    <div class="upload-form">
+      <form action = "/translate" method = "GET" 
+        enctype = "multipart/form-data">
+        <input type = "text" name = "text" />
+        <input type = "submit"/>
+      </form>
+    </div>
+
+    <p>Upload an text to summarize.</p>
+    <div class="upload-form">
+      <form action = "/summarize" method = "GET" 
+        enctype = "multipart/form-data">
+        <input type = "text" name = "text" />
+        <input type = "submit"/>
+      </form>
+    </div>
+  
+
+{% endblock %}
