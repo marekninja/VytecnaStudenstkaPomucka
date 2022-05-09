@@ -11,10 +11,15 @@ import requests
 app = Flask(__name__)
 UPLOAD_FOLDER = './static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER 
-SUBSCRIPTION = "2cacc70852ff4ad08d839c35d309670e"
-ENDPOINT_AZURE = "https://vytecnastudenstkapomuckaocr.cognitiveservices.azure.com/"
-ENDPOINT_SUMMARIZE = "http://localhost:7071/api/summarizeEn/"
-ENDPOINT_TRANSLATE = "http://localhost:7071/api/translateEnSk/"
+# SUBSCRIPTION = "2cacc70852ff4ad08d839c35d309670e"
+SUBSCRIPTION = "015975ded8144a4c9e3f92cc9996458a"
+# ENDPOINT_AZURE = "https://vytecnastudenstkapomuckaocr.cognitiveservices.azure.com/"
+ENDPOINT_AZURE = "https://cloudproject-ocr.cognitiveservices.azure.com/"
+# ENDPOINT_SUMMARIZE = "http://localhost:7071/api/summarizeEn/"
+ENDPOINT_SUMMARIZE = "https://exampleflaskfunction.azurewebsites.net/api/summarizeEn"
+# ENDPOINT_TRANSLATE = "http://localhost:7071/api/translateEnSk/"
+ENDPOINT_TRANSLATE = "https://exampleflaskfunction.azurewebsites.net/api/translateEnSk"
+
 
 @app.route("/")
 def index():
@@ -28,13 +33,13 @@ def translate():
   sk_text = response.json()['translations']
   return render_template("translate.html", translate_text=sk_text, original_text=en_text)
 
-@app.route('/sumarize', methods = ['GET', 'POST'])
+@app.route('/summarize', methods = ['GET', 'POST'])
 def summarize():
   en_text = request.args.get('text')
   print(f'[+] Text {en_text}')
   response = requests.get(f'{ENDPOINT_SUMMARIZE}?text={en_text}')
   sk_text = response.json()['output']
-  return render_template("summarize.html", translate_text=sk_text, original_text=en_text)
+  return render_template("summarize.html", summarize_text=sk_text, original_text=en_text)
 
 @app.route('/text_from_image', methods = ['GET', 'POST'])
 def ocr():

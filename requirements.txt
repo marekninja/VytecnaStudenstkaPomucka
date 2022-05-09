@@ -1,5 +1,7 @@
-certifi==2018.11.29
-Click==7.0
-Flask==1.0.2
-numpy==1.15.4
-Werkzeug==0.14.1
+certifi
+Click
+Flask
+Werkzeug
+azure-cognitiveservices-vision-computervision
+Jinja2
+MarkupSafe
