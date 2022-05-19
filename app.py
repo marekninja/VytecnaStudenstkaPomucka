@@ -25,6 +25,18 @@ ENDPOINT_TRANSLATE = "https://exampleflaskfunction.azurewebsites.net/api/transla
 def index():
   return render_template("index.html")
 
+@app.route("/translate_nav")
+def translate_nav():
+  return render_template("land_translate.html")  
+
+@app.route("/summarize_nav")
+def summarize_nav():
+  return render_template("land_summarize.html")
+
+@app.route("/text_from_image_nav")
+def text_from_image_nav():
+  return render_template("land_image_to_text.html")
+
 @app.route('/translate', methods = ['GET', 'POST'])
 def translate():
   en_text = request.args.get('text')
@@ -73,5 +85,5 @@ def ocr():
     return render_template("image_to_text.html", displaytext=text, fname=filename)
 
 if __name__ == '__main__':
-  # app.run(debug=True,host='0.0.0.0', port=666)
-  app.run()
+  app.run(debug=True,host='0.0.0.0', port=666)
+  # app.run()

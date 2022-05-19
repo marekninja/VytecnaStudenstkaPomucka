@@ -1,33 +1,45 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  
-    <p>Upload an image for text.</p>
+  <div class="container">
+    <h2>Vitajte na webe Výtečná studentská pomůcka.</h2>
+    
+    <h3>Nahrajte obrázok, z ktorého chcete získať text.</h3>
     <div class="upload-form">
       <form action = "/text_from_image" method = "POST" 
         enctype = "multipart/form-data">
         <input type = "file" name = "file" />
-        <input type = "submit"/>
+        <button type="submit" class="btn btn-primary">Extrahovať text</button>
       </form>
     </div>
 
-    <p>Upload an text to translate.</p>
+    <hr>
+
+    <h3>Vložte text, ktorý chcete preložiť.</h3>
     <div class="upload-form">
       <form action = "/translate" method = "GET" 
         enctype = "multipart/form-data">
-        <input type = "text" name = "text" />
-        <input type = "submit"/>
+        <div class="form-floating">
+          <textarea cols="80" rows="10" type = "text" name = "text" id="translate_text_area"></textarea>
+          <!-- <label for="translate_text_area">Text na preloženie</label> -->
+        </div>
+        <button type="submit" class="btn btn-primary">Preložiť</button>
       </form>
     </div>
 
-    <p>Upload an text to summarize.</p>
+    <hr>
+
+    <h3>Vložte text, ktorý chcete sumarizovať.</h3>
     <div class="upload-form">
       <form action = "/summarize" method = "GET" 
         enctype = "multipart/form-data">
-        <input type = "text" name = "text" />
-        <input type = "submit"/>
+        <div class="form-floating">
+          <textarea cols="80" rows="10" type = "text" name = "text" id="summarize_text_area"></textarea>
+          <!-- <label for="summarize_text_area">Text na sumazrizáciu</label> -->
+        </div>
+        <button type="submit" class="btn btn-primary">Sumarizovať</button>
       </form>
     </div>
-  
+  </div>
 
 {% endblock %}

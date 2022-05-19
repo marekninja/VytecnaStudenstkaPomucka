@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <h2>Vyňatie textu z obrázka.</h2>
+        <div class="col-md-5">
+            <div class="upload-form">
+                <form action = "/text_from_image" method = "POST" 
+                                enctype = "multipart/form-data">
+                    <input type = "file" name = "file" />
+                    <button type="submit" class="btn btn-primary">Extrahovať text</button>
+                </form>
+            </div>        
+        </div>
+        <div class="col-md-7 ocr-text">
+        </div>
+    </div>  
+</div>
+{% endblock %}

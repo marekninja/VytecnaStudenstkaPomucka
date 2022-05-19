@@ -1,25 +1,33 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<p class="text-left">{{ fname }} successfully uploaded.</p>
-<div class="row">
-    <div class="col-md-5">
-        <div class="image-container">
-            <p class="text-left">Original Image</p>     
-            <a href="/static/uploads/{{ fname }}" target="_new"><img src="/static/uploads/{{ fname }}" class="upload-image-thumb"></a>
+
+<div class="container">
+    <div class="row">
+        <h2>Vyňatie textu z obrázka.</h2>
+        <div class="col-md-5">
+            <div class="image-container">
+                <h3 class="text-left">Vložený obrázok</h3>     
+                <a href="/static/uploads/{{ fname }}" target="_new"><img src="/static/uploads/{{ fname }}" class="upload-image-thumb"></a>
+                <p class="text-left">{{ fname }} successfully uploaded.</p>
+            </div>
+            <div class="upload-form">
+                <p class="text-left">Chcete nahrať nový obrázok?</p>
+                <form action = "/text_from_image" method = "POST" 
+                                enctype = "multipart/form-data">
+                    <input type = "file" name = "file" />
+                    <button type="submit" class="btn btn-primary">Extrahovať text</button>
+                </form>
+            </div>        
         </div>
-        <div class="upload-form">
-            <p class="text-left">Upload another?</p>
-            <form action = "/text_from_image" method = "POST" 
-                              enctype = "multipart/form-data">
-                <input type = "file" name = "file" />
-                <input type = "submit"/>
+        <div class="col-md-7 ocr-text">
+            <h3 class="text-left">Text extrahovaný z obrázka.</h3>
+            <form action = "/summarize" method = "GET" 
+            enctype = "multipart/form-data">
+                <textarea cols="80" rows="25" type = "text" name = "text" class="form-control">{{ displaytext }}</textarea>
+                <button type="submit" class="btn btn-primary float-right">Sumarizovať</button>
             </form>
-        </div>        
-    </div>
-    <div class="col-md-7 ocr-text">
-        <p class="text-left">OCR Text from processed Image</p>
-        <textarea cols="80" rows="60">{{ displaytext }}</textarea>
-    </div>
-</div>  
+        </div>
+    </div>  
+</div>
 {% endblock %}
